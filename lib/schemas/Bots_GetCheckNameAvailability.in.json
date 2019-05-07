@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "The request body for a request to Bot Service Management to check availability of a bot name.",
+            "properties": {
+                "name": {
+                    "description": "the name of the bot for which availability needs to be checked.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "the type of the bot for which availability needs to be checked",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

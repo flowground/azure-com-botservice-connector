@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "A request to Bot Service Management to check availability of an Enterprise Channel name.",
+            "properties": {
+                "name": {
+                    "description": "The name of the Enterprise Channel for which availability needs to be checked.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,194 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "resourceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Azure resource",
+                    "properties": {
+                        "etag": {
+                            "description": "Entity Tag",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Specifies the resource ID.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "kind": {
+                            "description": "Required. Gets or sets the Kind of the resource.",
+                            "enum": [
+                                "sdk",
+                                "designer",
+                                "bot",
+                                "function"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "Kind"
+                            }
+                        },
+                        "location": {
+                            "description": "Specifies the location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Specifies the name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "sku": {
+                            "description": "Gets or sets the SKU of the resource.",
+                            "properties": {
+                                "name": {
+                                    "description": "The sku name",
+                                    "enum": [
+                                        "F0",
+                                        "S1"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuName"
+                                    }
+                                },
+                                "tier": {
+                                    "description": "Gets the sku tier. This is based on the SKU name.",
+                                    "enum": [
+                                        "Free",
+                                        "Standard"
+                                    ],
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuTier"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Contains resource tags defined as key/value pairs.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Specifies the type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Bot resource definition",
+            "properties": {
+                "properties": {
+                    "description": "The set of properties specific to bot resource",
+                    "properties": {
+                        "configuredChannels": {
+                            "description": "Collection of channels for which the bot is configured",
+                            "items": {
+                                "type": "string"
+                            },
+                            "readOnly": true,
+                            "type": "array"
+                        },
+                        "description": {
+                            "description": "The description of the bot",
+                            "type": "string"
+                        },
+                        "developerAppInsightKey": {
+                            "description": "The Application Insights key",
+                            "type": "string"
+                        },
+                        "developerAppInsightsApiKey": {
+                            "description": "The Application Insights Api Key",
+                            "type": "string"
+                        },
+                        "developerAppInsightsApplicationId": {
+                            "description": "The Application Insights App Id",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The Name of the bot",
+                            "type": "string"
+                        },
+                        "enabledChannels": {
+                            "description": "Collection of channels for which the bot is enabled",
+                            "items": {
+                                "type": "string"
+                            },
+                            "readOnly": true,
+                            "type": "array"
+                        },
+                        "endpoint": {
+                            "description": "The bot's endpoint",
+                            "type": "string"
+                        },
+                        "endpointVersion": {
+                            "description": "The bot's endpoint version",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "iconUrl": {
+                            "description": "The Icon Url of the bot",
+                            "type": "string"
+                        },
+                        "luisAppIds": {
+                            "description": "Collection of LUIS App Ids",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "luisKey": {
+                            "description": "The LUIS Key",
+                            "type": "string"
+                        },
+                        "msaAppId": {
+                            "description": "Microsoft App Id for the bot",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "displayName",
+                        "endpoint",
+                        "msaAppId"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

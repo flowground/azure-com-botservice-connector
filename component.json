@@ -1,0 +1,509 @@
+{
+    "title": "Azure Bot Service",
+    "description": "Azure Bot Service is a platform for creating smart conversational agents.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/botservice/2018-07-12/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "EnterpriseChannels_CheckNameAvailability": {
+            "main": "./lib/actions/EnterpriseChannels_CheckNameAvailability.js",
+            "title": "Check whether an Enterprise Channel name is available.",
+            "description": "Check whether an Enterprise Channel name is available.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_GetCheckNameAvailability": {
+            "main": "./lib/actions/Bots_GetCheckNameAvailability.js",
+            "title": "Check whether a bot name is available.",
+            "description": "Check whether a bot name is available.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_GetCheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all the available BotService operations.",
+            "description": "Lists all the available BotService operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_List": {
+            "main": "./lib/actions/Bots_List.js",
+            "title": "Returns all the resources of a particular type belonging to a subscription.",
+            "description": "Returns all the resources of a particular type belonging to a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_ListServiceProviders": {
+            "main": "./lib/actions/BotConnection_ListServiceProviders.js",
+            "title": "Lists the available Service Providers for creating Connection Settings",
+            "description": "Lists the available Service Providers for creating Connection Settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_ListServiceProviders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_ListByResourceGroup": {
+            "main": "./lib/actions/Bots_ListByResourceGroup.js",
+            "title": "Returns all the resources of a particular type belonging to a resource group",
+            "description": "Returns all the resources of a particular type belonging to a resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_Delete": {
+            "main": "./lib/actions/Bots_Delete.js",
+            "title": "Deletes a Bot Service from the resource group. ",
+            "description": "Deletes a Bot Service from the resource group. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_Get": {
+            "main": "./lib/actions/Bots_Get.js",
+            "title": "Returns a BotService specified by the parameters.",
+            "description": "Returns a BotService specified by the parameters.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_Update": {
+            "main": "./lib/actions/Bots_Update.js",
+            "title": "Updates a Bot Service",
+            "description": "Updates a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bots_Create": {
+            "main": "./lib/actions/Bots_Create.js",
+            "title": "Creates a Bot Service. Bot Service is a resource group wide resource type.",
+            "description": "Creates a Bot Service. Bot Service is a resource group wide resource type.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bots_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_Delete": {
+            "main": "./lib/actions/BotConnection_Delete.js",
+            "title": "Deletes a Connection Setting registration for a Bot Service",
+            "description": "Deletes a Connection Setting registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_Get": {
+            "main": "./lib/actions/BotConnection_Get.js",
+            "title": "Get a Connection Setting registration for a Bot Service",
+            "description": "Get a Connection Setting registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_Update": {
+            "main": "./lib/actions/BotConnection_Update.js",
+            "title": "Updates a Connection Setting registration for a Bot Service",
+            "description": "Updates a Connection Setting registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_Create": {
+            "main": "./lib/actions/BotConnection_Create.js",
+            "title": "Register a new Auth Connection for a Bot Service",
+            "description": "Register a new Auth Connection for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_ListWithSecrets": {
+            "main": "./lib/actions/BotConnection_ListWithSecrets.js",
+            "title": "Get a Connection Setting registration for a Bot Service",
+            "description": "Get a Connection Setting registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_ListWithSecrets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_ListByResourceGroup": {
+            "main": "./lib/actions/Channels_ListByResourceGroup.js",
+            "title": "Returns all the Channel registrations of a particular BotService resource",
+            "description": "Returns all the Channel registrations of a particular BotService resource",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_Delete": {
+            "main": "./lib/actions/Channels_Delete.js",
+            "title": "Deletes a Channel registration from a Bot Service",
+            "description": "Deletes a Channel registration from a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_Get": {
+            "main": "./lib/actions/Channels_Get.js",
+            "title": "Returns a BotService Channel registration specified by the parameters.",
+            "description": "Returns a BotService Channel registration specified by the parameters.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_Update": {
+            "main": "./lib/actions/Channels_Update.js",
+            "title": "Updates a Channel registration for a Bot Service",
+            "description": "Updates a Channel registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_Create": {
+            "main": "./lib/actions/Channels_Create.js",
+            "title": "Creates a Channel registration for a Bot Service",
+            "description": "Creates a Channel registration for a Bot Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Channels_ListWithKeys": {
+            "main": "./lib/actions/Channels_ListWithKeys.js",
+            "title": "Lists a Channel registration for a Bot Service including secrets",
+            "description": "Lists a Channel registration for a Bot Service including secrets",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Channels_ListWithKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BotConnection_ListByBotService": {
+            "main": "./lib/actions/BotConnection_ListByBotService.js",
+            "title": "Returns all the Connection Settings registered to a particular BotService resource",
+            "description": "Returns all the Connection Settings registered to a particular BotService resource",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BotConnection_ListByBotService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseChannels_ListByResourceGroup": {
+            "main": "./lib/actions/EnterpriseChannels_ListByResourceGroup.js",
+            "title": "Returns all the resources of a particular type belonging to a resource group.",
+            "description": "Returns all the resources of a particular type belonging to a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseChannels_Delete": {
+            "main": "./lib/actions/EnterpriseChannels_Delete.js",
+            "title": "Deletes an Enterprise Channel from the resource group",
+            "description": "Deletes an Enterprise Channel from the resource group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseChannels_Get": {
+            "main": "./lib/actions/EnterpriseChannels_Get.js",
+            "title": "Returns an Enterprise Channel specified by the parameters.",
+            "description": "Returns an Enterprise Channel specified by the parameters.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseChannels_Update": {
+            "main": "./lib/actions/EnterpriseChannels_Update.js",
+            "title": "Updates an Enterprise Channel.",
+            "description": "Updates an Enterprise Channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnterpriseChannels_Create": {
+            "main": "./lib/actions/EnterpriseChannels_Create.js",
+            "title": "Creates an Enterprise Channel.",
+            "description": "Creates an Enterprise Channel.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnterpriseChannels_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

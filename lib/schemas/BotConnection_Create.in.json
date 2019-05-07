@@ -1,0 +1,175 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "resourceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "connectionName": {
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Azure resource",
+                    "properties": {
+                        "etag": {
+                            "description": "Entity Tag",
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Specifies the resource ID.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "kind": {
+                            "description": "Required. Gets or sets the Kind of the resource.",
+                            "enum": [
+                                "sdk",
+                                "designer",
+                                "bot",
+                                "function"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "Kind"
+                            }
+                        },
+                        "location": {
+                            "description": "Specifies the location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Specifies the name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "sku": {
+                            "description": "Gets or sets the SKU of the resource.",
+                            "properties": {
+                                "name": {
+                                    "description": "The sku name",
+                                    "enum": [
+                                        "F0",
+                                        "S1"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuName"
+                                    }
+                                },
+                                "tier": {
+                                    "description": "Gets the sku tier. This is based on the SKU name.",
+                                    "enum": [
+                                        "Free",
+                                        "Standard"
+                                    ],
+                                    "readOnly": true,
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuTier"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Contains resource tags defined as key/value pairs.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Specifies the type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Bot channel resource definition",
+            "properties": {
+                "properties": {
+                    "description": "The set of properties specific to bot channel resource",
+                    "properties": {
+                        "clientId": {
+                            "description": "Client Id associated with the Connection Setting.",
+                            "type": "string"
+                        },
+                        "clientSecret": {
+                            "description": "Client Secret associated with the Connection Setting",
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "description": "Service Provider Parameters associated with the Connection Setting",
+                            "items": {
+                                "description": "Extra Parameter in a Connection Setting Properties to indicate service provider specific properties",
+                                "properties": {
+                                    "key": {
+                                        "description": "Key for the Connection Setting Parameter.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Value associated with the Connection Setting Parameter.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "scopes": {
+                            "description": "Scopes associated with the Connection Setting",
+                            "type": "string"
+                        },
+                        "serviceProviderDisplayName": {
+                            "description": "Service Provider Display Name associated with the Connection Setting",
+                            "type": "string"
+                        },
+                        "serviceProviderId": {
+                            "description": "Service Provider Id associated with the Connection Setting",
+                            "type": "string"
+                        },
+                        "settingId": {
+                            "description": "Setting Id set by the service for the Connection Setting.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
